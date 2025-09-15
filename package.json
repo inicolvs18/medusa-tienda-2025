@@ -16,6 +16,7 @@
     "build": "medusa build",
     "build:server": "copy medusa-config-server.js medusa-config.js && medusa build",
     "build:worker": "copy medusa-config-worker.js medusa-config.js && medusa build",
+    "build:render": "copy medusa-config-render.js medusa-config.js && medusa build && node scripts/post-build.js",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
     "start:render": "medusa migrations run && medusa start",

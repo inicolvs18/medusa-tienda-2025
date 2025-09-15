@@ -1,4 +1,3 @@
-// Configuración para modo servidor (con admin habilitado)
 const { loadEnv, defineConfig } = require('@medusajs/framework/utils')
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
@@ -8,8 +7,8 @@ function getDatabaseUrl() {
   const baseUrl = process.env.DATABASE_URL
   if (!baseUrl) return baseUrl
   
-  // Si estamos en producción y necesitamos SSL, agregar parámetros SSL
-  if (process.env.NODE_ENV === 'production' && process.env.DATABASE_SSL === 'true') {
+  // Si necesitamos SSL, agregar parámetros SSL
+  if (process.env.DATABASE_SSL === 'true') {
     const url = new URL(baseUrl)
     url.searchParams.set('sslmode', 'require')
     return url.toString()
@@ -22,7 +21,6 @@ module.exports = defineConfig({
   projectConfig: {
     databaseUrl: getDatabaseUrl(),
     redisUrl: process.env.REDIS_URL,
-    workerMode: "server",
     http: {
       storeCors: process.env.STORE_CORS || "https://medusa-storefront.onrender.com",
       adminCors: process.env.ADMIN_CORS || "https://medusa-admin.onrender.com", 
@@ -32,7 +30,7 @@ module.exports = defineConfig({
     }
   },
   admin: {
-    disable: false, // Admin habilitado en modo servidor
+    disable: false, // Admin habilitado para Render
   },
   modules: [
     {
@@ -44,3 +42,6 @@ module.exports = defineConfig({
     },
   ],
 })
+
+
+
