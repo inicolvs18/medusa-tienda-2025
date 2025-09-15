@@ -117,3 +117,6 @@ Environment Variables: [Ver variables del worker arriba]
 ---
 
 **¡Configuración Worker Mode lista para Render! 🎉**
+
+
+

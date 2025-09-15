@@ -10,3 +10,6 @@ module.exports = {
   // Render maneja automáticamente el puerto, no necesitas configurar manualmente
   // La variable PORT se establece automáticamente por Render
 };
+
+
+

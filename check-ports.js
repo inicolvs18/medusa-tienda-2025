@@ -45,3 +45,6 @@ requiredVars.forEach(varName => {
 console.log('\n🚀 ¡Configuración de puertos lista para Render!');
 console.log('💡 Render maneja automáticamente todos los puertos');
 console.log('💡 Solo necesitas configurar las variables de entorno');
+
+
+

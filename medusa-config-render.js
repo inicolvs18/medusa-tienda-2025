@@ -2,9 +2,24 @@ const { loadEnv, defineConfig } = require('@medusajs/framework/utils')
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+// Función para construir la URL de la base de datos con SSL
+function getDatabaseUrl() {
+  const baseUrl = process.env.DATABASE_URL
+  if (!baseUrl) return baseUrl
+  
+  // Si necesitamos SSL, agregar parámetros SSL
+  if (process.env.DATABASE_SSL === 'true') {
+    const url = new URL(baseUrl)
+    url.searchParams.set('sslmode', 'require')
+    return url.toString()
+  }
+  
+  return baseUrl
+}
+
 module.exports = defineConfig({
   projectConfig: {
-    databaseUrl: process.env.DATABASE_URL,
+    databaseUrl: getDatabaseUrl(),
     redisUrl: process.env.REDIS_URL,
     http: {
       storeCors: process.env.STORE_CORS || "https://medusa-storefront.onrender.com",
@@ -23,3 +38,6 @@ module.exports = defineConfig({
     },
   ],
 })
+
+
+
