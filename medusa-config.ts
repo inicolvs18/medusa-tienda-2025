@@ -17,6 +17,7 @@ module.exports = defineConfig({
   modules: [
     {
       resolve: "@medusajs/cache-redis",
+      key: "cacheService",
       options: {
         redisUrl: process.env.REDIS_URL,
       },
